@@ -1,8 +1,42 @@
 
 # jcb-spinner
 
-Example usage
+A custom element that displays a rotating spinner for loading or progress indicators.
 
+
+## Attributes
+
+### `visible`
+- **Type**: `Boolean`
+- **Description**: Indicates whether the spinner is visible or not.
+- **Default**: `false`
+
+---
+
+## CSS Custom Properties
+
+### `--jcb-spinner-size`
+- **Description**: Width and height of the rotating spinner.
+- **Default**: `18em`
+
+### `--jcb-spinner-background-opacity`
+- **Description**: Opacity of the spinner's background.
+- **Default**: `0.3`
+
+### `--jcb-spinner-border-width`
+- **Description**: Width of the spinner's border.
+- **Default**: `25px`
+
+### `--jcb-spinner-border-background`
+- **Description**: Background color of the spinner's border.
+- **Default**: `#ccc`
+
+### `--jcb-spinner-border-color`
+- **Description**: Color of the spinner's border.
+- **Default**: `#007bff`
+
+
+## Usage Example
 ```
 <!DOCTYPE html>
 <html lang="en">

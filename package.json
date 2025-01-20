@@ -1,6 +1,6 @@
 {
   "name": "jcb-spinner",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "dist/jcb-spinner.js",
   "exports": {

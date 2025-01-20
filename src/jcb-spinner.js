@@ -2,11 +2,12 @@ import { LitElement, css, html } from 'lit'
 
 /**
    * A custom-element which displays a spinner
-   * @attr {Boolean} visible - Indicates whether spinner is visible or not
-   * @cssprop --jcb-spinner-size - Width & height of rotating spinner
-   * @cssprop --jcb-spinner-background-opacity - Background opacity
-   * @cssprop --jcb-spinner-background - Ring background color
-   * @cssprop --jcb-spinner-color - Ring rotating part color
+   * @attr {Boolean} visible - Indicates whether spinner is visible or not (default: false)
+   * @cssprop --jcb-spinner-size - Width & height of rotating spinner (default: 18em)
+   * @cssprop --jcb-spinner-background-opacity - Background opacity (default: 0.3)
+   * @cssprop --jcb-spinner-border-width - Spinner border width (default:) 25px);
+   * @cssprop --jcb-spinner-border-background - Spinner border background color (default: #ccc);
+   * @cssprop --jcb-spinner-border-color - Spinner border color (default: #007bff);
    */
 export class Spinner extends LitElement {
 
@@ -19,11 +20,7 @@ export class Spinner extends LitElement {
    constructor() {
       super()
       // default values - before override by attributes
-      this.visible = true
-   }
-
-   get colorClass() {
-      return this.hover ? 'hovergray' : ''
+      this.visible = false
    }
 
    // called whenever a property changes
@@ -33,8 +30,8 @@ export class Spinner extends LitElement {
          ${this.visible
             ? html`
                <div class="overlay">
-                  <div class="overlay-background background-opacity"></div>
-                  <div class="spinner spinner-size border-width border-color"></div>
+                  <div class="overlay-background"></div>
+                  <div class="spinner"></div>
                   <div class="overlay-content">
                      <slot></slot>
                   </div>
@@ -72,12 +69,19 @@ export class Spinner extends LitElement {
             right: 0;
             bottom: 0;
             background-color: black;
+            opacity: var(--jcb-spinner-background-opacity, 0.3);
          }
 
          .spinner {
+            width: var(--jcb-spinner-size, 18em);
+            height: var(--jcb-spinner-size, 18em);
             border-style: solid;
-            border-top-style: solid;
+            border-width: var(--jcb-spinner-border-width, 25px);
+            border-color: var(--jcb-spinner-border-background, #ccc);
             border-radius: 50%;
+            border-top-style: solid;
+            border-top-width: var(--jcb-spinner-border-width, 25px);
+            border-top-color: var(--jcb-spinner-border-color, #007bff);
             animation: spin 1s linear infinite;
          }
 
@@ -96,25 +100,6 @@ export class Spinner extends LitElement {
             100% {
                transform: rotate(360deg);
             }
-         }
-
-         .spinner-size {
-            width: var(--jcb-spinner-size, 18em);
-            height: var(--jcb-spinner-size, 18em);
-         }
-
-         .background-opacity {
-            opacity: var(--jcb-spinner-background-opacity, 0.3);
-         }
-
-         .border-width {
-            border-width: var(--jcb-spinner-border-width, 25px);
-            border-top-width: var(--jcb-spinner-border-width, 25px);
-         }
-
-         .border-color {
-            border-color: var(--jcb-spinner-border-background, #ccc);
-            border-top-color: var(--jcb-spinner-border-color, #007bff);
          }
       `
    }
